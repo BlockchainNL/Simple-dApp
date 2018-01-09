@@ -1,0 +1,4 @@
+node_modules/
+build/contracts/Migrations.json
+build/contracts/SimpleStorage.json
+build/contracts/MUNCoin.json
