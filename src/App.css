@@ -23,7 +23,7 @@ code {
 }
 
 .pure-button-primary {
-  background-color: #0c1a2b;
+  background-color: #7f1734;
 }
 
 .pure-button-primary:hover {
@@ -31,15 +31,15 @@ code {
 }
 
 .pure-form input[type="text"]:focus {
-  border-color: #0c1a2b;
+  border-color: #7f1734;
 }
 
 /* NAVBAR */
 
 .navbar {
   position: fixed;
-  padding: 5px;
-  background: #0c1a2b;
+  padding: 0px 5px 5px;
+  background: #7f1734;
   font-family: 'Oswald', 'Arial Narrow', sans-serif;
 }
 
@@ -50,7 +50,13 @@ code {
 .navbar a:active,
 .navbar a:focus,
 .navbar a:hover {
-  background: #233e5e;
+  background: #000000;
+}
+
+.navbar img {
+  margin-top: 10px;
+  height: 40px;
+  width: 50px;
 }
 
 .navbar .pure-menu-heading {
@@ -60,9 +66,4 @@ code {
 
 .navbar .navbar-right {
   float: right;
-}
-
-.navbar .uport-logo {
-  height: 16px;
-  margin-right: 10px;
 }
