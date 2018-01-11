@@ -7,6 +7,8 @@ import './css/open-sans.css'
 import './css/pure-min.css'
 import './App.css'
 
+import mun_logo from './imgs/mun_logo.png' 
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -15,6 +17,7 @@ class App extends Component {
       storageValue: 0,
       web3: null
     }
+    this.handleSubmitTransfer = this.handleSubmitTransfer.bind(this)
   }
 
   componentWillMount() {
@@ -44,7 +47,6 @@ class App extends Component {
 
     var munCoinInstance
 
-    // Get accounts.
     this.state.web3.eth.getAccounts((error, accounts) => {
       munCoin.deployed().then((instance) => {
         munCoinInstance = instance
@@ -64,21 +66,58 @@ class App extends Component {
 
   }
 
+  handleSubmitTransfer(event) {
+    let to = this.refs.recepient.value
+    let amount = this.refs.amount.value
+
+    this.state.munCoinInstance.transfer(to, amount, {from: this.state.currAddress})
+    this.clearForm()
+
+    event.preventDefault()
+  }
+
+  clearForm() {
+    let toAddr = this.refs.recepient
+    let amt = this.refs.amount
+
+    toAddr.value = ''
+    amt.value = ''
+  }
+
   render() {
     return (
       <div className="App">
         <nav className="navbar pure-menu pure-menu-horizontal">
+            <img src={mun_logo} alt="MUN logo"/>
             <a href="#" className="pure-menu-heading pure-menu-link">MUNExchange</a>
         </nav>
 
         <main className="container">
           <div className="pure-g">
             <div className="pure-u-1-1">
+              <br/>
               <h1>MUNExchange!</h1>
               <p>Trade items and services within the university using <em>MUNCoin</em></p>
               <hr/>
               <h3>Your Address:&nbsp;</h3><p>{this.state.currAddress}</p>
               <h3>MUNCoin Balance:</h3><p>You have <span>{this.state.MUNBalance}</span></p>
+            </div>
+          </div>
+          <hr/>
+          <div className="pure-g">
+            <div className="pure-u-1-1">  
+              <form onSubmit={this.handleSubmitTransfer} id="transfer-form">
+                <h3>Transfer MUNCoin</h3>
+                <label>
+                  Amount:&nbsp;
+                  <input type="text" ref="amount" placeholder="0" />
+                </label>&nbsp;
+                <label>
+                  To:&nbsp;
+                  <input type="text" ref="recepient" placeholder="0x..." />
+                </label><br/><br/>
+                <input className="pure-button pure-button-primary" type="submit" value="Send" />
+              </form>
             </div>
           </div>
         </main>
