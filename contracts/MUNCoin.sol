@@ -3,7 +3,7 @@ pragma solidity ^0.4.16;
 contract MUNCoin {
 
 	string public name = 'MUNCoin';
-	string public symbol = 'MUN';
+	string public symbol = 'MNC';
 	uint public constant _totalSupply = 25000000;
 	uint public constant decimalPlaces = 18;
 

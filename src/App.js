@@ -14,8 +14,8 @@ class App extends Component {
     super(props)
 
     this.state = {
-      storageValue: 0,
-      web3: null
+      web3: null,
+      MUNBalance: 0
     }
     this.handleSubmitTransfer = this.handleSubmitTransfer.bind(this)
   }
@@ -100,7 +100,7 @@ class App extends Component {
               <p>Trade items and services within the university using <em>MUNCoin</em></p>
               <hr/>
               <h3>Your Address:&nbsp;</h3><p>{this.state.currAddress}</p>
-              <h3>MUNCoin Balance:</h3><p>You have <span>{this.state.MUNBalance}</span></p>
+              <h3>MUNCoin Balance:</h3><p>You have <strong><span>{this.state.MUNBalance}</span></strong> MNC</p>
             </div>
           </div>
           <hr/>
