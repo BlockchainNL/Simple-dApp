@@ -70,21 +70,19 @@ class App extends Component {
   }
 
   handleSubmitTransfer(event) {
-    let to = this.refs.recepient.value
-    let amount = this.refs.amount.value
+    const { sendAddress, sendAmount } = this.state
 
-    this.state.munCoinInstance.transfer(to, amount, {from: this.state.currAddress})
+    this.state.munCoinInstance.transfer(sendAddress, sendAmount, {from: this.state.currAddress})
     this.clearForm()
 
     event.preventDefault()
   }
 
   clearForm() {
-    let toAddr = this.refs.recepient
-    let amt = this.refs.amount
+    const sendAddress = ''
+    const sendAmount = ''
 
-    toAddr.value = ''
-    amt.value = ''
+    this.setState({ sendAddress, sendAmount })
   }
 
   handleInputChange = event => {
