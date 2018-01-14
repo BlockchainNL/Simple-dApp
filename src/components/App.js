@@ -102,8 +102,8 @@ class App extends Component {
         <Navigation />
         <Main currentAddress={currentAddress} balnce={balance} />
           <Form handleSubmit={ this.handleSubmitTransfer } >
-                <Input name="sendAmount" value={sendAmount} handleChange={this.handleInputChange} label="Amount:&nbsp;" type="text" ref="amount" placeholder="0"/>
-                <Input name="sendAddress" value={sendAddress} handleChange={this.handleInputChange} label="To:&nbsp;" type="text" ref="recipient" placeholder="0x..." />
+                <Input name="sendAmount" value={sendAmount} handleChange={this.handleInputChange} label="Amount:&nbsp;" type="text" placeholder="0"/>
+                <Input name="sendAddress" value={sendAddress} handleChange={this.handleInputChange} label="To:&nbsp;" type="text" placeholder="0x..." />
                 <Submit type='submit' value='Send' />
           </Form>
       </div>
