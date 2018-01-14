@@ -3,13 +3,12 @@ import MUNCoinContract from '../../build/contracts/MUNCoin.json'
 import getWeb3 from '../utils/getWeb3'
 import contract from 'truffle-contract'
 import Input from './Input'
+import Navigation from './Navigation'
 
 import '../css/oswald.css'
 import '../css/open-sans.css'
 import '../css/pure-min.css'
 import './App.css'
-
-import mun_logo from '../imgs/mun_logo.png' 
 
 class App extends Component {
   constructor(props) {
@@ -96,11 +95,7 @@ class App extends Component {
     
     return (
       <div className="App">
-        <nav className="navbar pure-menu pure-menu-horizontal">
-            <img src={mun_logo} alt="MUN logo"/>
-            <a href="#" className="pure-menu-heading pure-menu-link">MUNExchange</a>
-        </nav>
-
+        <Navigation />
         <main className="container">
           <div className="pure-g">
             <div className="pure-u-1-1">
