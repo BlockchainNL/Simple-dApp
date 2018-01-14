@@ -4,6 +4,7 @@ import getWeb3 from '../utils/getWeb3'
 import contract from 'truffle-contract'
 import Input from './Input'
 import Navigation from './Navigation'
+import Form from './Form'
 
 import '../css/oswald.css'
 import '../css/open-sans.css'
@@ -108,17 +109,12 @@ class App extends Component {
             </div>
           </div>
           <hr/>
-          <div className="pure-g">
-            <div className="pure-u-1-1">  
-              <form onSubmit={this.handleSubmitTransfer} id="transfer-form">                
-                <h3>Transfer MUNCoin</h3>
+          <Form handleSubmit={ this.handleSubmitTransfer } >
                 <Input name="sendAmount" value={sendAmount} handleChange={this.handleInputChange} label="Amount:&nbsp;" type="text" ref="amount" placeholder="0"/>
                 <Input name="sendAddress" value={sendAddress} handleChange={this.handleInputChange} label="To:&nbsp;" type="text" ref="recipient" placeholder="0x..." />
                 <br/><br/>
                 <input className="pure-button pure-button-primary" type="submit" value="Send" />
-              </form>
-            </div>
-          </div>
+          </Form>
         </main>
       </div>
     );
