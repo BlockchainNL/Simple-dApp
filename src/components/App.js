@@ -24,7 +24,6 @@ class App extends Component {
       sendAddress: null,
       sendAmount: null
     }
-    this.handleSubmitTransfer = this.handleSubmitTransfer.bind(this)
   }
 
   componentDidMount() {
@@ -72,7 +71,7 @@ class App extends Component {
 
   }
 
-  handleSubmitTransfer(event) {
+  handleSubmitTransfer = (event) => {
     const { sendAddress, sendAmount } = this.state
 
     this.state.munCoinInstance.transfer(sendAddress, sendAmount, {from: this.state.currentAddress})
