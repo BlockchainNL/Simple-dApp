@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Input = ({ label, type, ref, placeholder }) => {
+const Input = ({ name, value, handleChange, label, type, ref, placeholder }) => {
   return (
     <label>
       { label }
-      <input type={type} ref={ref} placeholder={placeholder} />
+      <input name={name} value={value} onChange={handleChange} type={type} ref={ref} placeholder={placeholder} />
     </label>
   )
 }

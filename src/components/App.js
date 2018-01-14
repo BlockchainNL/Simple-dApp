@@ -17,7 +17,9 @@ class App extends Component {
 
     this.state = {
       web3: null,
-      MUNBalance: 0
+      MUNBalance: 0,
+      sendAddress: null,
+      sendAmount: null
     }
     this.handleSubmitTransfer = this.handleSubmitTransfer.bind(this)
   }
@@ -85,7 +87,15 @@ class App extends Component {
     amt.value = ''
   }
 
+  handleInputChange = event => {
+    const { name, value } = event.target
+
+    this.setState({ [name]: value })
+  }
+
   render() {
+    const { sendAddress, sendAmount } = this.state
+    
     return (
       <div className="App">
         <nav className="navbar pure-menu pure-menu-horizontal">
@@ -109,8 +119,8 @@ class App extends Component {
             <div className="pure-u-1-1">  
               <form onSubmit={this.handleSubmitTransfer} id="transfer-form">                
                 <h3>Transfer MUNCoin</h3>
-                <Input label="Amount:&nbsp;" type="text" ref="amount" placeholder="0"/>
-                <Input label="To:&nbsp;" type="text" ref="recipient" placeholder="0x..." />
+                <Input name="sendAmount" value={sendAmount} handleChange={this.handleInputChange} label="Amount:&nbsp;" type="text" ref="amount" placeholder="0"/>
+                <Input name="sendAddress" value={sendAddress} handleChange={this.handleInputChange} label="To:&nbsp;" type="text" ref="recipient" placeholder="0x..." />
                 <br/><br/>
                 <input className="pure-button pure-button-primary" type="submit" value="Send" />
               </form>
