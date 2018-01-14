@@ -5,6 +5,7 @@ import contract from 'truffle-contract'
 import Input from './Input'
 import Navigation from './Navigation'
 import Form from './Form'
+import Main from './Main'
 
 import '../css/oswald.css'
 import '../css/open-sans.css'
@@ -17,7 +18,8 @@ class App extends Component {
 
     this.state = {
       web3: null,
-      MUNBalance: 0,
+      balance: 0,
+      currentAddress: null,
       sendAddress: null,
       sendAmount: null
     }
@@ -61,18 +63,18 @@ class App extends Component {
         return munCoinInstance.balanceOf.call(accounts[0])
       }).then((result) => {
         // Update state with the result.
-        return this.setState({ MUNBalance: result.c[0] })
+        return this.setState({ balance: result.c[0] })
       })
     })
 
-    this.setState({currAddress: this.state.web3.eth.accounts[0]})
+    this.setState({currentAddress: this.state.web3.eth.accounts[0]})
 
   }
 
   handleSubmitTransfer(event) {
     const { sendAddress, sendAmount } = this.state
 
-    this.state.munCoinInstance.transfer(sendAddress, sendAmount, {from: this.state.currAddress})
+    this.state.munCoinInstance.transfer(sendAddress, sendAmount, {from: this.state.currentAddress})
     this.clearForm()
 
     event.preventDefault()
@@ -92,30 +94,18 @@ class App extends Component {
   }
 
   render() {
-    const { sendAddress, sendAmount } = this.state
+    const { currentAddress, balance, sendAddress, sendAmount } = this.state
     
     return (
       <div className="App">
         <Navigation />
-        <main className="container">
-          <div className="pure-g">
-            <div className="pure-u-1-1">
-              <br/>
-              <h1>MUNExchange!</h1>
-              <p>Trade items and services within the university using <em>MUNCoin</em></p>
-              <hr/>
-              <h3>Your Address:&nbsp;</h3><p>{this.state.currAddress}</p>
-              <h3>MUNCoin Balance:</h3><p>You have <strong><span>{this.state.MUNBalance}</span></strong> MNC</p>
-            </div>
-          </div>
-          <hr/>
+        <Main currentAddress={currentAddress} balnce={balance} />
           <Form handleSubmit={ this.handleSubmitTransfer } >
                 <Input name="sendAmount" value={sendAmount} handleChange={this.handleInputChange} label="Amount:&nbsp;" type="text" ref="amount" placeholder="0"/>
                 <Input name="sendAddress" value={sendAddress} handleChange={this.handleInputChange} label="To:&nbsp;" type="text" ref="recipient" placeholder="0x..." />
                 <br/><br/>
                 <input className="pure-button pure-button-primary" type="submit" value="Send" />
           </Form>
-        </main>
       </div>
     );
   }
