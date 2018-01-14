@@ -20,7 +20,7 @@ class App extends Component {
     this.handleSubmitTransfer = this.handleSubmitTransfer.bind(this)
   }
 
-  componentWillMount() {
+  componentDidMount() {
     // Get network provider and web3 instance.
     // See utils/getWeb3 for more info.
 
@@ -44,10 +44,12 @@ class App extends Component {
 
     const munCoin = contract(MUNCoinContract)
     munCoin.setProvider(this.state.web3.currentProvider)
+    console.log('provider', this.state.web3.currentProvider)
 
     var munCoinInstance
 
     this.state.web3.eth.getAccounts((error, accounts) => {
+      console.log(accounts)
       munCoin.deployed().then((instance) => {
         munCoinInstance = instance
 
