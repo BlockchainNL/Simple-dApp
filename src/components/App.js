@@ -79,8 +79,8 @@ class App extends Component {
   }
 
   clearForm() {
-    const sendAddress = ''
-    const sendAmount = ''
+    const sendAddress = null
+    const sendAmount = null
 
     this.setState({ sendAddress, sendAmount })
   }
