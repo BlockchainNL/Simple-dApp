@@ -107,16 +107,11 @@ class App extends Component {
           <hr/>
           <div className="pure-g">
             <div className="pure-u-1-1">  
-              <form onSubmit={this.handleSubmitTransfer} id="transfer-form">
+              <form onSubmit={this.handleSubmitTransfer} id="transfer-form">                
                 <h3>Transfer MUNCoin</h3>
-                <label>
-                  Amount:&nbsp;
-                  <input type="text" ref="amount" placeholder="0" />
-                </label>&nbsp;
-                <label>
-                  To:&nbsp;
-                  <input type="text" ref="recepient" placeholder="0x..." />
-                </label><br/><br/>
+                <Input label="Amount:&nbsp;" type="text" ref="amount" placeholder="0"/>
+                <Input label="To:&nbsp;" type="text" ref="recipient" placeholder="0x..." />
+                <br/><br/>
                 <input className="pure-button pure-button-primary" type="submit" value="Send" />
               </form>
             </div>

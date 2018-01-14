@@ -9,4 +9,11 @@ const Input = ({ label, type, ref, placeholder }) => {
   )
 }
 
+Input.defaultProps = {
+  label: '',
+  type: 'text',
+  ref: null,
+  placeholder: ''
+}
+
 export default Input
