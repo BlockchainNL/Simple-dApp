@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Main = ({ currentAddress, balance, children }) => {
+
   return (
     <main className="container">
       <div className="pure-g">

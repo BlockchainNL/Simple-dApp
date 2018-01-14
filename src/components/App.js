@@ -96,11 +96,11 @@ class App extends Component {
 
   render() {
     const { currentAddress, balance, sendAddress, sendAmount } = this.state
-    
+
     return (
       <div className="App">
         <Navigation />
-        <Main currentAddress={currentAddress} balnce={balance} />
+        <Main currentAddress={currentAddress} balance={balance} />
           <Form handleSubmit={ this.handleSubmitTransfer } >
                 <Input name="sendAmount" value={sendAmount} handleChange={this.handleInputChange} label="Amount:&nbsp;" type="text" placeholder="0"/>
                 <Input name="sendAddress" value={sendAddress} handleChange={this.handleInputChange} label="To:&nbsp;" type="text" placeholder="0x..." />
