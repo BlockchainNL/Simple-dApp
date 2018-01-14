@@ -6,6 +6,7 @@ import Input from './Input'
 import Navigation from './Navigation'
 import Form from './Form'
 import Main from './Main'
+import Submit from './Submit'
 
 import '../css/oswald.css'
 import '../css/open-sans.css'
@@ -103,8 +104,7 @@ class App extends Component {
           <Form handleSubmit={ this.handleSubmitTransfer } >
                 <Input name="sendAmount" value={sendAmount} handleChange={this.handleInputChange} label="Amount:&nbsp;" type="text" ref="amount" placeholder="0"/>
                 <Input name="sendAddress" value={sendAddress} handleChange={this.handleInputChange} label="To:&nbsp;" type="text" ref="recipient" placeholder="0x..." />
-                <br/><br/>
-                <input className="pure-button pure-button-primary" type="submit" value="Send" />
+                <Submit type='submit' value='Send' />
           </Form>
       </div>
     );

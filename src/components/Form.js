@@ -7,8 +7,6 @@ const Form = ({ handleSubmit, children }) => {
         <form onSubmit={handleSubmit} id="transfer-form">                
           <h3>Transfer MUNCoin</h3>
           {children}
-          <br/><br/>
-          <input className="pure-button pure-button-primary" type="submit" value="Send" />
         </form>
       </div>
     </div>          
