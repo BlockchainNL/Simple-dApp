@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
-import MUNCoinContract from '../build/contracts/MUNCoin.json'
-import getWeb3 from './utils/getWeb3'
+import MUNCoinContract from '../../build/contracts/MUNCoin.json'
+import getWeb3 from '../utils/getWeb3'
+import contract from 'truffle-contract'
+import Input from './Input'
 
-import './css/oswald.css'
-import './css/open-sans.css'
-import './css/pure-min.css'
+import '../css/oswald.css'
+import '../css/open-sans.css'
+import '../css/pure-min.css'
 import './App.css'
 
-import mun_logo from './imgs/mun_logo.png' 
+import mun_logo from '../imgs/mun_logo.png' 
 
 class App extends Component {
   constructor(props) {
@@ -39,9 +41,6 @@ class App extends Component {
   }
 
   instantiateContract() {
-
-    const contract = require('truffle-contract')
-
     const munCoin = contract(MUNCoinContract)
     munCoin.setProvider(this.state.web3.currentProvider)
     console.log('provider', this.state.web3.currentProvider)
