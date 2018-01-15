@@ -29,30 +29,35 @@ class App extends Component {
   componentDidMount() {
     // Get network provider and web3 instance.
     // See utils/getWeb3 for more info.
+    this.timeout = setInterval(this.pollWeb3, 1500)
+  }
 
+  componentWillUnmount() {
+    clearTimeout(this.timeout)
+  }
+
+  pollWeb3 = () => {
     getWeb3
-    .then(results => {
-      this.setState({
-        web3: results.web3
-      })
+      .then(results => {
+        this.setState({
+          web3: results.web3
+        })
 
-      // Instantiate contract once web3 provided.
-      this.instantiateContract()
-    })
-    .catch(() => {
-      console.log('Error finding web3.')
-    })
+        // Instantiate contract once web3 provided.
+        this.instantiateContract()
+      })
+      .catch(() => {
+        console.log('Error finding web3.')
+      })
   }
 
   instantiateContract() {
     const munCoin = contract(MUNCoinContract)
     munCoin.setProvider(this.state.web3.currentProvider)
-    console.log('provider', this.state.web3.currentProvider)
 
     var munCoinInstance
 
     this.state.web3.eth.getAccounts((error, accounts) => {
-      console.log(accounts)
       munCoin.deployed().then((instance) => {
         munCoinInstance = instance
 
@@ -72,9 +77,9 @@ class App extends Component {
   }
 
   handleSubmitTransfer = (event) => {
-    const { sendAddress, sendAmount } = this.state
+    const { sendAddress, sendAmount, currentAddress } = this.state
 
-    this.state.munCoinInstance.transfer(sendAddress, sendAmount, {from: this.state.currentAddress})
+    this.state.munCoinInstance.transfer(sendAddress, sendAmount, {from: currentAddress})
     this.clearForm()
 
     event.preventDefault()
